@@ -48,7 +48,38 @@ src/
 │       ├── application.yml     # Configurações da aplicação
 │       └── ...
 └── test/                       # Testes automatizados
+
 ```
+## Microsserviços Relacionados
+
+Este projeto depende de outros microsserviços que complementam a funcionalidade do **BFF Agendador**:
+
+- **[Sistema de Usuários](https://github.com/GabrielPraata/usuario)**: Gerencia as operações de CRUD dos usuários.
+- **[Serviço de Notificação](https://github.com/GabrielPraata/notificacao)**: Envia e-mails de notificação para os usuários sobre suas tarefas.
+- **[Agendador de Tarefas](https://github.com/GabrielPraata/agendador-tarefas)**: Responsável pela gestão de tarefas, incluindo CRUD e notificações.
+
+## Endpoints da API
+
+### 1. Usuário
+
+- **POST /usuario**: Cria um novo usuário.
+- **POST /usuario/login**: Realiza login e retorna um token JWT.
+- **GET /usuario?email=example@example.com**: Busca um usuário pelo e-mail.
+- **PUT /usuario**: Atualiza dados do usuário.
+- **DELETE /usuario/{email}**: Deleta um usuário pelo e-mail.
+
+### 2. Tarefas
+
+- **POST /tarefas**: Cria uma nova tarefa.
+- **GET /tarefas**: Lista todas as tarefas do usuário autenticado.
+- **GET /tarefas/eventos**: Retorna tarefas dentro de um intervalo de tempo.
+- **PUT /tarefas**: Atualiza uma tarefa.
+- **DELETE /tarefas?id=taskId**: Deleta uma tarefa.
+- **PATCH /tarefas?status=INICIADA&id=taskId**: Atualiza o status da tarefa.
+
+### 3. Notificação
+
+- **POST /email**: Envia uma notificação por e-mail.
 
 ## 🚀 Como executar
 
